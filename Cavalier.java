@@ -1,4 +1,4 @@
-public class Cavalier extends Piece {
+public class Cavalier extends Piece { bonjour
 	public Cavalier(boolean blanc, int ligne, int colonne) {
 		super(blanc, ligne, colonne);
 		if (blanc) {
@@ -20,8 +20,8 @@ public class Cavalier extends Piece {
         }
 		
 		/*
-		 On initialise deux variables calculant la valeur absolue de la différence entre la ligne/colonne de départ et celle d'arrivée
-		 Si le produit de ces deux variables est égal à 2 alors on retourne true
+		 On initialise deux variables calculant la valeur absolue de la diffÃ©rence entre la ligne/colonne de dÃ©part et celle d'arrivÃ©e
+		 Si le produit de ces deux variables est Ã©gal Ã  2 alors on retourne true
 		 */
 		int diffLigne = Math.abs(this.ligne - ligneArrivee);
         int diffColonne = Math.abs(this.colonne - colonneArrivee);
