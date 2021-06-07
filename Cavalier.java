@@ -1,4 +1,4 @@
-public class Cavalier extends Piece { bonjour
+public class Cavalier extends Piece { 
 	public Cavalier(boolean blanc, int ligne, int colonne) {
 		super(blanc, ligne, colonne);
 		if (blanc) {
