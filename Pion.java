@@ -2,14 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Pion extends Piece {
-	/*
-	 On doit pouvoir savoir si c'est le premier coup du pion ou non
-	 */
+	//On met une variable premier coup pour savoir si il peut aller verticalement ou diagonalement
 	private boolean premierCoup;
 	private boolean peutEtrePrisEnPassant;
-	/*
-	 Constructeur
-	 */
+	
+	//Constructeur
 	public Pion(boolean blanc, int ligne, int colonne) {
 		super(blanc, ligne, colonne);
 		if (blanc) {
@@ -46,9 +43,9 @@ public class Pion extends Piece {
 		}
 		
 		if (blanc) {
-			deplacementLignePossible = 1; //Les blancs montent en ligne donc +1
+			deplacementLignePossible = 1; //Les blancs montent en ligne donc +1, logique !
 		} else {
-			deplacementLignePossible = -1; //Les noirs descendent en ligne donc -1
+			deplacementLignePossible = -1; //Les noirs descendent en ligne donc -1, logique aussi !
 		}
 		
 		if ((colonneArrivee == colonne + 1 || colonneArrivee == colonne - 1) 
@@ -76,9 +73,7 @@ public class Pion extends Piece {
 		return null;
 	}
 	
-	/*
-	 Une méthode pour vérifier si il peut se déplacer
-	 */
+	 //MÃ©thode de vÃ©rification pour savoir si le dÃ©placement est possible
 
 	public boolean peutSeDeplacer(int ligneArrivee, int colonneArrivee, Plateau plateau) {
 		
@@ -89,7 +84,7 @@ public class Pion extends Piece {
 		int deplacementLignePossible;
 		Piece pieceArrivee = plateau.getPiece(ligneArrivee, colonneArrivee);
 		
-		if (pieceArrivee != null) { // Si l'arrivée n'est pas vide on regarde si la pièce sur la case d'arrivée est de la même couleur
+		if (pieceArrivee != null) { // Si l'arrivÃ©e n'est pas vide on regarde si la piÃ¨ce sur la case d'arrivÃ©e est de la mÃªme couleur
 			if(pieceArrivee.isBlanc() == isBlanc()) {
 				return false;
 			}
@@ -100,25 +95,21 @@ public class Pion extends Piece {
 				deplacementLignePossible = -1; //Les noirs descendent en ligne donc -1
 			}
 			return (colonneArrivee == colonne + 1 || colonneArrivee == colonne - 1) 
-					&& ligneArrivee == ligne + deplacementLignePossible; //Le pion prend la pièce ennemie diagonale
+					&& ligneArrivee == ligne + deplacementLignePossible; //Le pion prend la piÃ¨ce ennemie diagonale
 		}
 		
-		/*
-		 On vérifie si la case d'arrivée est bien sur la même colonne que la case de départ
-		 */
+		 //VÃ©rification si la case d'arrivÃ©e est sur la mÃªme colonne que la case dÃ©part
 		
 		if (colonne != colonneArrivee) {
-			/*
-			 On vérifie la prise en passant
-			 */
+			
+			 //VÃ©rification de la prise en passant
+			
 			return getPionPriseEnPassant(ligneArrivee, colonneArrivee, plateau) != null;
 		}
 		
-		/*
-		 On vérifie la couleur de la pièce
-		 Si c'est le premier coup de la pièce, on lui donne la possibilité de faire un déplacement de 1 ou 2 vers l'avant
-		 Sinon il ne peut que faire un déplacement de 1 vers l'avant
-		 */
+		//On vÃ©rifie la couleur de la piÃ¨ce
+		//Si c'est le premier coup de la piÃ¨ce, on lui donne la possibilitÃ© de faire un dÃ©placement de 1 ou 2 vers l'avant
+		//Sinon il ne peut que faire un dÃ©placement de 1 vers l'avant
 
 		if (blanc) { 
 			if(premierCoup) {
@@ -179,7 +170,7 @@ public class Pion extends Piece {
 			break;
 		}
 		
-		System.out.println("Votre pion peut être promu !");
+		System.out.println("Votre pion peut Ãªtre promu !");
 
 		boolean demanderPiece = true;
 		Scanner input = new Scanner(System.in);
@@ -212,7 +203,7 @@ public class Pion extends Piece {
 				demanderPiece = false;
 				break;
 			default:
-				System.out.println("Erreur, veuillez saisir le bon caractère.");
+				System.out.println("Erreur, veuillez saisir le bon caractÃ¨re.");
 				break;
 			}
 		}
