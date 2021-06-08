@@ -20,22 +20,21 @@ public class Fou extends Piece {
 				return false;
 			}
 		}
-		
-		/*
-		 On vérifie si la case d'arrivée est bien sur la diagonale de la case de départ
-		 */
+	
+		 //VÃ©rification si la case d'arrivÃ©e est bien sur la diagonale de la case de dÃ©part
+		 
 		if(ligneArrivee - colonneArrivee != this.ligne - this.colonne && 
 				ligneArrivee + colonneArrivee != this.ligne + this.colonne)
 			return false;
 		
 		/*
-		 On vérifie si c'est une diagonale montante ou descendante
-		 On vérifie si la pièce souhaite aller vers le haut ou vers le bas en comparant la ligne d'arrivée est supérieur à 
-		 la ligne de départ
-		 Avec une boucle on vérifie si il y a une pièce entre la case d'arrivée et la case de départ sur la diagonale
+		 VÃ©rification si c'est une diagonale montante ou descendante
+		 VÃ©rifiaction si la piÃ¨ce souhaite aller vers le haut ou vers le bas en comparant la ligne d'arrivÃ©e est supÃ©rieur Ã  
+		 la ligne de dÃ©part
+		 VÃ©rification Ã  l'aide d'une boucle, si il y a une piÃ¨ce entre la case d'arrivÃ©e et la case de dÃ©part sur la diagonale
 		 
-		 Équation 1 : arriveeLigne - arriveeColonne = departLigne - departColonne
-		 Équation 2 : arriveeLigne + arriveeColonne = departLigne + departColonne
+		 Ã‰quation 1 : arriveeLigne - arriveeColonne = departLigne - departColonne
+		 Ã‰quation 2 : arriveeLigne + arriveeColonne = departLigne + departColonne
 		 */
 		
 		if(ligneArrivee - colonneArrivee == this.ligne - this.colonne) {
