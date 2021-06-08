@@ -53,7 +53,7 @@ public class Roi extends Piece {
 				simulerDeplacement(ligneDepart, colonne, plateau);
 				
 				if(estEnEchec(plateau)) {
-					System.out.println("Grand roque impossible car le roi est menacé");
+					System.out.println("Grand roque impossible car le roi est menacÃ©");
 					simulerDeplacement(ligneDepart, colonneDepart, plateau);
 					return null;
 				}
@@ -101,7 +101,7 @@ public class Roi extends Piece {
 				simulerDeplacement(ligneDepart, colonne, plateau);
 				
 				if(estEnEchec(plateau)) {
-					System.out.println("Petit roque impossible car le roi est menacé");
+					System.out.println("Petit roque impossible car le roi est menacÃ©");
 					simulerDeplacement(ligneDepart, colonneDepart, plateau);
 					return null;
 				}
@@ -140,9 +140,9 @@ public class Roi extends Piece {
 			}
 		}
 		
-		/*
-		 Vérification Grand roque ou petit roque
-		 */
+		
+		//VÃ©rification Grand roque ou petit roque
+	
 		if (getTourDuRoque(ligneArrivee, colonneArrivee, plateau) != null) {
 			return true;
 		}
@@ -153,37 +153,32 @@ public class Roi extends Piece {
 			return false;
 		}
 		
-		/*
-		 Si la colonne d'arrivée est la même colonne de départ, on vérifie si le coup joué est un déplacement d'une case vers le haut
-		 ou vers le bas
-		 */
+		
+		 //Si la colonne d'arrivÃ©e est la mÃªme colonne de dÃ©part, on vÃ©rifie si le coup jouÃ© est un dÃ©placement d'une case vers le haut ou vers le bas
+		 
+		 
 		
 		if(colonneArrivee == colonne) {
 			return ligneArrivee == ligne + 1 || ligneArrivee == ligne - 1;
 		}
 		
-		/*
-		 Si la ligne d'arrivée est la même ligne de départ, on vérifie si le coup joué est un déplacement d'une case vers la gauche ou
-		 vers la droite
-		 */
+		
+		 //Si la ligne d'arrivÃ©e est la mÃªme ligne de dÃ©part, on vÃ©rifie si le coup jouÃ© est un dÃ©placement d'une case vers la gauche ou vers la droite
+		
 		
 		if(ligneArrivee == ligne) {
 			return colonneArrivee == colonne + 1 || colonneArrivee == colonne -1;
 		}
 		
-		/*
-		 On vérifie l'équation 1 du Fou, si c'est true, on compare la ligne d'arrivée et la ligne de départ pour vérifier si on monte
-		 ou descend d'une case en diagonale
-		 */
+		 //On vÃ©rifie l'Ã©quation 1 du Fou, si c'est true, on compare la ligne d'arrivÃ©e et la ligne de dÃ©part pour vÃ©rifier si on monte ou descend d'une case en diagonale
+		 
 		
 		if(ligneArrivee - colonneArrivee == ligne - colonne) {
 			return ligneArrivee == ligne + 1 || ligneArrivee == ligne - 1;
 		}
 		
-		/*
-		 On vérifie l'équation 2 du Fou, si c'est true, on compare la ligne d'arrivée et la ligne de départ pour vérifier si on monte
-		 ou descend d'une case en diagonale
-		 */
+		 //On vÃ©rifie l'Ã©quation 2 du Fou, si c'est true, on compare la ligne d'arrivÃ©e et la ligne de dÃ©part pour vÃ©rifier si on monte  ou descend d'une case en diagonale
+		
 		
 		if(ligneArrivee + colonneArrivee == ligne + colonne) {
 			return ligneArrivee == ligne + 1 || ligneArrivee == ligne - 1;
@@ -245,13 +240,13 @@ public class Roi extends Piece {
 			Coup coupDeLaTour = new Coup(tourDuGrandRoque.getLigne(), tourDuGrandRoque.getColonne(), 
 					coup.getLigneArrivee(), coup.getColonneArrivee() + 1);
 			tourDuGrandRoque.deplacer(coupDeLaTour, plateau, historiqueDesCoups);
-			//Le coup de la tour du roque n'est pas ajouté dans l'historique des coups
+			//Le coup de la tour du roque n'est pas ajoutÃ© dans l'historique des coups
 			historiqueDesCoups.remove(historiqueDesCoups.size() - 1); 
 		} else if (tourDuPetitRoque != null) {
 			Coup coupDeLaTour = new Coup(tourDuPetitRoque.getLigne(), tourDuPetitRoque.getColonne(), 
 					coup.getLigneArrivee(), coup.getColonneArrivee() - 1);
 			tourDuPetitRoque.deplacer(coupDeLaTour, plateau, historiqueDesCoups);
-			//Le coup de la tour du roque n'est pas ajouté dans l'historique des coups
+			//Le coup de la tour du roque n'est pas ajoutÃ© dans l'historique des coups
 			historiqueDesCoups.remove(historiqueDesCoups.size() - 1);
 		}
 	}
