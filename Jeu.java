@@ -25,7 +25,7 @@ public class Jeu {
 	
 	private void afficherHistoriqueDesCoups() {
 		if (!historiqueDesCoups.isEmpty()) {
-			System.out.println("Voici l'historique des coups de la partie : ");
+			System.out.println("Voici l'historique des coups de la partie : "); 
 		}
 		
 		int numTour = 0;
@@ -46,10 +46,10 @@ public class Jeu {
 	}
 	
 	private void afficherPlateau() {
-		System.out.println(plateau); //Affichage du plateau
+		System.out.println(plateau); //On affiche le plateau
 	}
 	
-	private boolean estEnPat() {
+	private boolean estEnPat() { //verification pour PAT
 		if(plateau.estEnPat(joueurCourant.isBlanc())) {
 			System.out.println("Le joueur "+ joueurCourant.getCouleur() + " est en PAT !");
 			System.out.println("Match nul !");
@@ -61,10 +61,10 @@ public class Jeu {
 	
 	private Coup entrerCoup() {
 		System.out.println("C'est au joueur "+ joueurCourant.getCouleur() + " de jouer"); 
-		//On demande au jour d'entrer interactivement un coup
+		//On demande au joueur d'entrer interactivement un coup. C'est lÃ  que la partie commence !
 		
 		boolean demanderCoup = true;
-		Scanner input = new Scanner(System.in); //Pour sélectionner la case de départ et la case d'arrivée
+		Scanner input = new Scanner(System.in); //Pour sÃ©lectionner la case de dÃ©part et la case d'arrivÃ©e tout simplement
 		char choix;
 		int colonneDepart = 0;
 		int ligneDepart = 0;
@@ -72,7 +72,7 @@ public class Jeu {
 		int ligneArrivee = 0;
 		
 		while(demanderCoup) {
-			System.out.println("Entrez le numéro de la colonne de la pièce à déplacer (entre 1 et 8 ou S pour sauvegarder) :");
+			System.out.println("Choisissez la colonne de la piÃ¨ce Ã  dÃ©placer ! (entre 1 et 8 ou S pour sauvegarder) :");
 			choix = input.next().charAt(0);
 			if (choix >= '1' && choix <= '8') {
 				colonneDepart = choix - '1';
@@ -80,11 +80,11 @@ public class Jeu {
 				sauvegarder();
 				continue;
 			} else {
-				System.out.println("Le numéro saisie est incorrect");
+				System.out.println("Votre saisie est incorrecte !");
 				continue;
 			}
 			
-			System.out.println("Entrez le numéro de la ligne de la pièce à déplacer (entre 1 et 8 ou S pour sauvegarder) :");
+			System.out.println("Choisissez la ligne de la piÃ¨ce Ã  dÃ©placer ! (entre 1 et 8 ou S pour sauvegarder) :");
 			choix = input.next().charAt(0);
 			if (choix >= '1' && choix <= '8') {
 				ligneDepart = choix - '1';
@@ -92,11 +92,11 @@ public class Jeu {
 				sauvegarder();
 				continue;
 			} else {
-				System.out.println("Le numéro saisie est incorrect");
+				System.out.println("Votre saisie est incorrecte !");
 				continue;
 			}
 			
-			System.out.println("Entrez le numéro de la colonne d'arrivée (entre 1 et 8 ou S pour sauvegarder) :");
+			System.out.println("Choisissez la colonne de la case d'arrivÃ©e ! (entre 1 et 8 ou S pour sauvegarder) :");
 			choix = input.next().charAt(0);
 			if (choix >= '1' && choix <= '8') {
 				colonneArrivee = choix - '1';
@@ -104,11 +104,11 @@ public class Jeu {
 				sauvegarder();
 				continue;
 			} else {
-				System.out.println("Le numéro saisie est incorrect");
+				System.out.println("Votre saisie est incorrecte !");
 				continue;
 			}
 			
-			System.out.println("Entrez le numéro de la ligne d'arrivée (entre 1 et 8 ou S pour sauvegarder) :");
+			System.out.println("Choisissez la ligne de la case d'arrivÃ©e ! (entre 1 et 8 ou S pour sauvegarder) :");
 			choix = input.next().charAt(0);
 			if (choix >= '1' && choix <= '8') {
 				ligneArrivee = choix - '1';
@@ -116,17 +116,17 @@ public class Jeu {
 				sauvegarder();
 				continue;
 			} else {
-				System.out.println("Le numéro saisie est incorrect");
+				System.out.println("Votre saisie est incorrecte !");
 				continue;
 			}
 			
 			if (!plateau.caseExiste(ligneDepart, colonneDepart)) {
-				System.out.println("La case de départ sélectionné n'existe pas");
+				System.out.println("Cette case de dÃ©part n'existe pas !");
 				continue;
 			}
 			
 			if (!plateau.caseExiste(ligneArrivee, colonneArrivee)) {
-				System.out.println("La case d'arrivée sélectionné n'existe pas");
+				System.out.println("Cette case d'arrivÃ©e n'existe pas !");
 				continue;
 			}
 			
@@ -138,7 +138,7 @@ public class Jeu {
 			}
 			
 			if(piece.isBlanc() != joueurCourant.isBlanc()) {
-				System.out.println("Pas de la même couleur");
+				System.out.println("Pas de la mÃªme couleur");
 				continue;
 			}
 			
@@ -149,43 +149,43 @@ public class Jeu {
 	}
 	
 	private boolean jouerCoup(Coup coup) {
-		Piece pieceDepart = plateau.getPiece(coup.getLigneDepart(), coup.getColonneDepart()); //On récupère la pièce de départ
+		Piece pieceDepart = plateau.getPiece(coup.getLigneDepart(), coup.getColonneDepart()); //RÃ©cupÃ©ration de la piÃ¨ce de dÃ©part
 
-		if(!pieceDepart.peutSeDeplacer(coup.getLigneArrivee(), coup.getColonneArrivee(), plateau)) { //On vérifie si la pièce de départ peut se déplacer
-			System.out.println("Le coup n'est pas valable");
+		if(!pieceDepart.peutSeDeplacer(coup.getLigneArrivee(), coup.getColonneArrivee(), plateau)) { //VÃ©rification du mouvement de celle-ci
+			System.out.println("Coup non valable !");
 			return false;	
 		}
 		
 		Piece pieceArrivee = plateau.getPiece(coup.getLigneArrivee(), coup.getColonneArrivee());
-		pieceDepart.simulerDeplacement(coup.getLigneArrivee(), coup.getColonneArrivee(), plateau); //On simule le déplacement de la pièce de départ
+		pieceDepart.simulerDeplacement(coup.getLigneArrivee(), coup.getColonneArrivee(), plateau); //Simulation du dÃ©placement de dÃ©part
 		
-		if(plateau.getRoi(joueurCourant.isBlanc()).estEnEchec(plateau)) { //On vérifie si on met notre propre roi en échec
-			pieceDepart.simulerDeplacement(coup.getLigneDepart(), coup.getColonneDepart(), plateau); //On remet la piece à son point de départ
+		if(plateau.getRoi(joueurCourant.isBlanc()).estEnEchec(plateau)) { //VÃ©rification si on met notre propre roi en Ã©chec
+			pieceDepart.simulerDeplacement(coup.getLigneDepart(), coup.getColonneDepart(), plateau); //Remise de la piece Ã  son point de dÃ©part
 			if(pieceArrivee != null) {
-				plateau.setPiece(coup.getLigneArrivee(), coup.getColonneArrivee(), pieceArrivee); //On remet la piece d'arrivée à son point de départ
+				plateau.setPiece(coup.getLigneArrivee(), coup.getColonneArrivee(), pieceArrivee); //Remise de la piece d'arrivÃ©e Ã  son point de dÃ©part
 			}
-			System.out.println("Le roi ne peut pas se mettre en échec...");
+			System.out.println("Le roi ne peut pas se mettre en Ã©chec !!");
 			return false;
 		}
 		
-		pieceDepart.simulerDeplacement(coup.getLigneDepart(), coup.getColonneDepart(), plateau); //On remet la piece à son point de départ dans tous les cas
+		pieceDepart.simulerDeplacement(coup.getLigneDepart(), coup.getColonneDepart(), plateau); //Remise de la piece Ã  son point de dÃ©part dans tous les cas
 		if(pieceArrivee != null) { //Si il y a une piece ennemie
-			plateau.setPiece(coup.getLigneArrivee(), coup.getColonneArrivee(), pieceArrivee); //On remet la pièce ennemie à sa case de départ
+			plateau.setPiece(coup.getLigneArrivee(), coup.getColonneArrivee(), pieceArrivee); //Remise de la piÃ¨ce ennemie Ã  sa case de dÃ©part
 		}
 		
-		pieceDepart.deplacer(coup, plateau, historiqueDesCoups); //On déplace juste la pièce à sa case d'arrivée
+		pieceDepart.deplacer(coup, plateau, historiqueDesCoups); //Deplacement de la piÃ¨ce Ã  sa case d'arrivÃ©e
 		plateau.interdirePriseEnPassant(!joueurCourant.isBlanc());
 		return true;
 	}
 	
-	private boolean estEnEchecEtMat() {
+	private boolean estEnEchecEtMat() { //Verification de l'echec et Mat
 		if (!plateau.getRoi(!joueurCourant.isBlanc()).estEnEchecEtMat(plateau)) {
 			return false;
 		}
 		
 		afficherHistoriqueDesCoups();
 		System.out.println(plateau);
-		System.out.println("Echec et mat ! Le joueur " + joueurCourant.getCouleur() + " a gagné !");
+		System.out.println("Echec et mat ! Le joueur " + joueurCourant.getCouleur() + " a gagnÃ© ! BRAVO A TOI !");
 		return true;
 	}
 	
@@ -197,7 +197,7 @@ public class Jeu {
 		}
 	}
 	
-	private void sauvegarder() {
+	private void sauvegarder() { //Sauvegarde de la partie
 		try {
 			FileWriter fichier = new FileWriter(SAUVEGARDE);
 			BufferedWriter sortie = new BufferedWriter(fichier);
@@ -211,20 +211,20 @@ public class Jeu {
 			
 			sortie.close();
 			
-			System.out.println("La partie a été sauvegardé dans le fichier " + SAUVEGARDE);
+			System.out.println("La partie a Ã©tÃ© sauvegardÃ© dans le fichier " + SAUVEGARDE);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	private void chargerPartie() {
+	private void chargerPartie() { //Restauration de la partie
 		try {
 			FileReader fichier = new FileReader(SAUVEGARDE);
 			BufferedReader entree = new BufferedReader(fichier);
 			String ligne = entree.readLine();
 			
 			if (ligne == null) {
-				System.out.println("La partie du fichier " + SAUVEGARDE + " a été chargée");
+				System.out.println("La partie du fichier " + SAUVEGARDE + " a Ã©tÃ© chargÃ©e");
 				entree.close();
 				return;
 			}
@@ -268,14 +268,14 @@ public class Jeu {
 				changerJoueur();
 			}
 			
-			System.out.println("La partie du fichier " + SAUVEGARDE + " a été chargée");
+			System.out.println("La partie du fichier " + SAUVEGARDE + " a Ã©tÃ© chargÃ©e");
 			entree.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	private void demanderChargementPartie() {
+	private void demanderChargementPartie() { //Demande au joueur si ils veulent rÃ©cuperer une sauvegarde de partie
 		File fichier = new File(SAUVEGARDE);
 		if(!fichier.exists() || fichier.isDirectory()) { 
 		    return;
@@ -283,7 +283,7 @@ public class Jeu {
 		
 		boolean choixNonValide = true;
 		Scanner input = new Scanner(System.in);
-		System.out.println("Voulez-vous charger la partie sauvegardée dans le fichier " + SAUVEGARDE + " ? (O pour Oui ou N pour Non)");
+		System.out.println("Voulez-vous charger la partie sauvegardÃ©e dans le fichier " + SAUVEGARDE + " ? (O pour Oui ou N pour Non)");
 		while(choixNonValide) {
 			char choix = input.next().charAt(0);
 			switch (choix) {
@@ -295,7 +295,7 @@ public class Jeu {
 				choixNonValide = false;
 				break;
 			default:
-				System.out.println("Erreur, veuillez saisir le bon caractère.");
+				System.out.println("Erreur, veuillez saisir le bon caractÃ¨re.");
 				break;
 			}
 		}
@@ -305,7 +305,7 @@ public class Jeu {
 		/*
 		 La boucle commence
 		 */
-		while(true) { //Tant que echecEtMat est faux, la partie continue			
+		while(true) { //Tant qu'il n'y a pas d'Ã©chec et mat, la partie continue	!		
 			afficherHistoriqueDesCoups();
 			
 			afficherPlateau();
@@ -317,7 +317,7 @@ public class Jeu {
 			Coup coup = entrerCoup();
 
 			/*
-		 	Vérification : Si le coup est valable, on déplace la pièce et on affiche le plateau pour mettre à jour
+		 	VÃ©rification : Si le coup est valable, on dÃ©place la piÃ¨ce et on affiche le plateau pour mettre Ã  jour
 			 */
 			if(!jouerCoup(coup)) {
 				continue;
