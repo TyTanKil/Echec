@@ -23,6 +23,7 @@ public class Cavalier extends Piece {
 		 On initialise deux variables calculant la valeur absolue de la différence entre la ligne/colonne de départ et celle d'arrivée
 		 Si le produit de ces deux variables est égal à 2 alors on retourne true
 		 */
+		//Merci les mathématiques (pour une fois)
 		int diffLigne = Math.abs(this.ligne - ligneArrivee);
         int diffColonne = Math.abs(this.colonne - colonneArrivee);
         return diffLigne * diffColonne == 2;
