@@ -30,20 +30,20 @@ public class Tour extends Piece {
 			}
 		}
 		
-		/*
-		 Vérification : la case d'arrivée doit être sur la même ligne ou colonne que la case de départ sinon on retourne false
-		 */
+		
+		 //VÃ©rification : la case d'arrivÃ©e doit Ãªtre sur la mÃªme ligne ou colonne que la case de dÃ©part sinon on retourne false
+		 
 		
 		if (colonneArrivee != colonne && ligneArrivee != ligne) {
 			return false;
 		}
 		
 		/*
-		 On vérifie si il se déplace à l'horizontale ou en verticale
-		 Si c'est en verticale, on vérifie si elle va vers le bas ou vers le haut
-		 Sinon on vérifie si elle va vers la gauche ou la droite
-		 On vérifie si une pièce se trouve entre la case de départ et la case d'arrivée avec une boucle
-		 Dans cette boucle, on vérifie si la case intermédiaire "c" est vide sinon on retourne false
+		 On vÃ©rifie s'il se dÃ©place Ã  l'horizontale ou en verticale
+		 Si c'est en verticale, on vÃ©rifie si elle va vers le bas ou vers le haut
+		 Sinon on vÃ©rifie si elle va vers la gauche ou la droite
+		 On vÃ©rifie si une piÃ¨ce se trouve entre la case de dÃ©part et la case d'arrivÃ©e avec une boucle
+		 Dans cette boucle, on vÃ©rifie si la case intermÃ©diaire "c" est vide sinon on retourne false
  		 */
 		
 		if(colonneArrivee == this.colonne) {
