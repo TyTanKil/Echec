@@ -16,7 +16,7 @@ public class Plateau {
 		cases[0][0] = new Tour(true,0,0);
 		cases[0][1] = new Cavalier(true,0,1);
 		cases[0][2] = new Fou(true,0,2);
-		cases[0][3] = new Dame(true,0,3); 
+		cases[0][3] = new Reine(true,0,3); 
 		cases[0][4] = roiBlanc;
 		cases[0][5] = new Fou(true,0,5);
 		cases[0][6] = new Cavalier(true,0,6);
@@ -34,7 +34,7 @@ public class Plateau {
 		cases[7][0] = new Tour(false,7,0);
 		cases[7][1] = new Cavalier(false,7,1);
 		cases[7][2] = new Fou(false,7,2);
-		cases[7][3] = new Dame(false,7,3); 
+		cases[7][3] = new Reine(false,7,3); 
 		cases[7][4] = roiNoir;
 		cases[7][5] = new Fou(false,7,5);
 		cases[7][6] = new Cavalier(false,7,6);
@@ -55,11 +55,11 @@ public class Plateau {
 		//cases[1][0] = new Pion(false,1,0);
 		//cases[4][4] = new Pion(true,4,4);
 		
-		/*Vérification promotion
+		/*VÃ©rification promotion
 		cases[6][0] = new Pion(true,6,0);
 		
-		/*Vérification PAT
-		cases[6][0] = new Dame(true, 6, 0);
+		/*VÃ©rification PAT
+		cases[6][0] = new Reine(true, 6, 0);
 		cases[1][3] = new Tour(true, 1, 3);
 		cases[1][5] = new Tour(true, 1, 5);
 		cases[7][0] = new Pion(false, 7, 0);*/
@@ -72,7 +72,7 @@ public class Plateau {
 		String s = "";
 		for(int ligne = 7 ; ligne >= 0 ; ligne--) {
 			s += " -------------------------\n";
-			s += ligne + 1; //coordonnées en ligne
+			s += ligne + 1; //coordonnÃ©es en ligne
 			for(int colonne = 0 ; colonne < 8 ; colonne++) {
 				if(cases[ligne][colonne] != null) {
 					s += "|"+ cases[ligne][colonne].getSymbole();
@@ -84,7 +84,7 @@ public class Plateau {
 			s += "\n";
 		}
 		s += " -------------------------\n";
-		s += "  A  B  C  D  E  F  G  H\n"; //coordonnées en colonne
+		s += "  A  B  C  D  E  F  G  H\n"; //coordonnÃ©es en colonne
 		return s;
 	}
 	
