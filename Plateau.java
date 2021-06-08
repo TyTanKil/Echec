@@ -5,9 +5,7 @@ public class Plateau {
 	private Roi roiBlanc;
 	private Roi roiNoir;
 	
-	/*
-	Initialisation du plateau de jeu avec le constructeur
-	*/
+	//On initialise le plateau, on le dessine !
 	public Plateau() {
 		cases = new Piece[8][8];
 		roiBlanc = new Roi(true,0,4);
@@ -65,9 +63,7 @@ public class Plateau {
 		cases[7][0] = new Pion(false, 7, 0);*/
 	} 
 	
-	/*
-	 Affichage du plateau de jeu
-	 */
+	//On affiche les lignes
 	public String toString() {
 		String s = "";
 		for(int ligne = 7 ; ligne >= 0 ; ligne--) {
@@ -88,9 +84,7 @@ public class Plateau {
 		return s;
 	}
 	
-	/*
-	 getters et setters
-	 */
+	//Getter et Setter
 	
 	public Piece getPiece(int ligne, int colonne) {
 		if (ligne>7 || ligne<0 || colonne>7 || colonne<0) {
@@ -133,7 +127,7 @@ public class Plateau {
 		return roiNoir;
 	}
 	
-	public void interdirePriseEnPassant(boolean blanc) {
+	public void interdirePriseEnPassant(boolean blanc) { //technique bizarre mais on l'a mise
 		for (int ligne = 0 ; ligne < 8 ; ligne++) {
 			for (int colonne = 0 ; colonne < 8 ; colonne++) {
 				if(cases[ligne][colonne] == null || !(cases[ligne][colonne] instanceof Pion) 
