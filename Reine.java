@@ -22,9 +22,9 @@ public class Reine extends Piece {
 			}
 		}
 		
-		/*
-		 On fusionne la vérification des déplacement de la tour et du fou
-		 */
+		
+		 //On fusionne la vÃ©rification des dÃ©placement de la tour et du fou car plus simple pour le codage
+		 
 		
 		if (colonneArrivee != this.colonne && ligneArrivee != this.ligne
 			&& ligneArrivee - colonneArrivee != this.ligne - this.colonne 
@@ -32,10 +32,8 @@ public class Reine extends Piece {
 			return false;
 		}
 		
-		/*
-		 Si la première vérification est validée alors on reprend les vérifications de la tour et du fou pour voir si une pièce 
-		 se trouve entre la case d'arrivée et la case de départ
-		 */
+		 //Si la premiÃ¨re vÃ©rification est validÃ©e alors on reprend les vÃ©rifications de la tour et du fou pour voir si une piÃ¨ce 
+		 //se trouve entre la case d'arrivÃ©e et la case de dÃ©part
 	
 		if(colonneArrivee == this.colonne) {
 			if(ligneArrivee > this.ligne) {
