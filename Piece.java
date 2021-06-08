@@ -2,18 +2,16 @@ import java.util.ArrayList;
 
 public abstract class Piece {
 	
-	/*
-	 Une pièce est caractérisé par sa couleur et son symbole en fonction de sa couleur
-	 */
+	
+	// Une piÃ¨ce = une couleur et un symbole selon sa couleur
+	
 	
 	protected boolean blanc;
 	protected String symbole;
 	protected int ligne;
 	protected int colonne;
 	
-	/*
-	 Constructeur de la pièce
-	 */
+	//Constructeur de la piÃ¨ce
 	
 	public Piece(boolean blanc, int ligne, int colonne) {
 		this.blanc = blanc;
@@ -21,9 +19,7 @@ public abstract class Piece {
 		this.colonne = colonne;
 	}
 	
-	/*
-	 Getters et setters
-	 */
+	//Getters et Setters
 	
 	public int getLigne() {
 		return ligne;
@@ -65,9 +61,7 @@ public abstract class Piece {
 		colonne = coup.getColonneArrivee();
 	}
 	
-	/*
-	 Ne pas surcharger simulerDeplacement
-	 */
+	//Attention Ã  ne pas surcharger simulerDeplacement !!
 	
 	public void simulerDeplacement(int ligneArrivee, int colonneArrivee, Plateau plateau) {
 		plateau.setPiece(ligneArrivee, colonneArrivee, this);
